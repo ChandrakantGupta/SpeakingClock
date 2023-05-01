@@ -14,7 +14,7 @@ class ClockConverterApplicationTests {
 	    private WebTestClient webTestClient;
 
 	    @Test
-	    public void testGetHelloWorld() {
+	    public void testTimeConvert() {
 	        webTestClient.get()
 	                .uri("/time-to-words?time=00:00")
 	                .exchange()
@@ -30,8 +30,8 @@ class ClockConverterApplicationTests {
 	      webTestClient.get()
           .uri("/time-to-words?time=:00")
           .exchange()
-          .expectStatus().isOk()
-          .expectBody(String.class).isEqualTo("Invalid time format. Please enter time in HH:mm format.");
+          .expectStatus().isBadRequest()
+          .expectBody(String.class).isEqualTo("Invalid time format, expected format is HH:mm");
 	    
 	      webTestClient.get()
           .uri("/time-to-words?time=11:59")
@@ -43,8 +43,8 @@ class ClockConverterApplicationTests {
 	      webTestClient.get()
           .uri("/time-to-words?time=27:60")
           .exchange()
-          .expectStatus().isOk()
-          .expectBody(String.class).isEqualTo("An error occurred while converting time to words.");
+          .expectStatus().isBadRequest()
+          .expectBody(String.class).isEqualTo("Invalid time format, expected format is HH:mm");
 	 
 	    }
 	    
