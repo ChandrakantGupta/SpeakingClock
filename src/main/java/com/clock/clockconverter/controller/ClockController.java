@@ -28,12 +28,4 @@ public class ClockController {
     }
 
 	
-	@GetMapping
-	public String DisplayTime() {
-		
-		return "Hello World";
-	}
-	
-	
-
 }

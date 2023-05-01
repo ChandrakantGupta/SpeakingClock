@@ -13,7 +13,7 @@ public class TimeConverter {
             timeInWords += "Midday";
         } else {
             timeInWords += convertToWords(hour);
-            timeInWords += " o'clock";
+            //timeInWords += " o'clock";
         }
 
         // Convert minute to words
